@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1397278735946161721}
   - component: {fileID: 1397278735946161722}
   - component: {fileID: 1397278735946161723}
-  - component: {fileID: 1397278735946161724}
+  - component: {fileID: 7340194639528681439}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -99,7 +99,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1397278735946161724
+--- !u!114 &7340194639528681439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,5 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b65f9d6932de9448b2ba1c22850fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  speed: 5
+  maxhp: 25
+  newhp: 0
+  maxspeed: 4
+  newspeed: 0
+  removeSpeed: 5
+  slowed: 0

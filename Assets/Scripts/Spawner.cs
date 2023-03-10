@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float repeatRate = 10f;
+    public float repeatRate = 7f;
     public GameObject enemy;
     void Start()
     {

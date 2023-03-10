@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class StickyTurret : MonoBehaviour
 {
     //targeting
     public Transform target;
@@ -12,16 +13,19 @@ public class Turret : MonoBehaviour
     public float fireRate = 2f;
     public Transform bulletPart;
     public Transform fireLocation;
-    
+    Enemy enemyscript;
+
 
     void Start()
     {
         InvokeRepeating("ChangeTarget", 0f, 0.5f);
-        InvokeRepeating("ShootBullet", 0f, fireRate);
+        InvokeRepeating("ShootStickyBullet", 0f, fireRate);
     }
 
     void ChangeTarget()
     {
+
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject nearestEnemy = null;
         float shortestDistance = Mathf.Infinity;
@@ -31,10 +35,14 @@ public class Turret : MonoBehaviour
             if (distance < shortestDistance)
             { shortestDistance = distance;
                 nearestEnemy = enemy;
+                
             }
+            enemyscript = nearestEnemy.GetComponent<Enemy>();
         }
 
-        if(nearestEnemy != null && shortestDistance < range)
+        
+
+        if (nearestEnemy != null && shortestDistance < range && enemyscript.slowed==false)
         {
             target = nearestEnemy.transform;
         }

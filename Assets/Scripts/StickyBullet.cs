@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class StickyBullet : MonoBehaviour
 {
     Enemy enemyscript;
     public Transform target;
 
-    public float speed = 1f;
+    public float speed = 5f;
 
-    public int damage = 5;
+    public int damage = 1;
+
+    public float slow = 2f;
 
 
     public void Seek(Transform _target)
@@ -33,7 +35,6 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-
     }
 
 
@@ -42,7 +43,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject == target.gameObject && target != null)
         {
             enemyscript = target.GetComponent<Enemy>();
-            enemyscript.losehp(damage);
+            enemyscript.losespeed(slow);
             Destroy(this.gameObject);
         }
     }
