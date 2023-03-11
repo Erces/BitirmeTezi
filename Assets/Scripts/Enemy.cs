@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float newspeed;
     public float removeSpeed = 5f;
     public Boolean slowed = false;
+    public Boolean lasered = false;
     void Start()
     {
         newhp = maxhp;
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
         if (slowed == false)
         {
             newspeed = newspeed / slow;
-            Debug.Log("losespeed"+newspeed);
+            //Debug.Log("losespeed"+newspeed);
             slowed = true;
             Invoke("removeSlow", removeSpeed); 
         }
@@ -34,14 +35,14 @@ public class Enemy : MonoBehaviour
         void removeSlow()
     {
         newspeed = maxspeed;
-        Debug.Log("removeslow"+newspeed);
+       // Debug.Log("removeslow"+newspeed);
         slowed = false;
     }
 
     public void losehp(int damage) 
     {
         newhp = newhp - damage;
-        Debug.Log(newhp);
+        //Debug.Log(newhp);
         if (newhp <= 0)
         {
             Destroy(this.gameObject);
