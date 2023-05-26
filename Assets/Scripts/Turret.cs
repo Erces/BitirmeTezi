@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     public Transform rotatePart;
     //shooting
+    public float normalFireRate = 2f;
     public float fireRate = 2f;
     public Transform bulletPart;
     public Transform fireLocation;
@@ -17,9 +18,26 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("ChangeTarget", 0f, 0.5f);
-        InvokeRepeating("ShootBullet", 0f, fireRate);
+        //InvokeRepeating("ShootBullet", 0f, fireRate);
     }
+    void Update()
+    {
+        if (target == null)
+            return;
 
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotatation = lookRotation.eulerAngles;
+        rotatePart.rotation = Quaternion.Euler(0f, rotatation.y, 0f);
+        fireRate -= Time.deltaTime;
+        if(fireRate <= 0)
+        {
+            ShootBullet();
+            fireRate = normalFireRate;
+
+        }
+
+    }
     void ChangeTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -69,16 +87,5 @@ public class Turret : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (target == null)
-            return;
-
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotatation = lookRotation.eulerAngles;
-        rotatePart.rotation = Quaternion.Euler(0f,rotatation.y,0f);
-
-
-    }
+    
 }
