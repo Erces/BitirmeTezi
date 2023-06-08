@@ -84,6 +84,7 @@ public class Enemy : MonoBehaviour
     {
         if (slowed == false)
         {
+            Debug.Log("SLOWED");
             newspeed = newspeed / slow;
             agent.speed = 1;
             //Debug.Log("losespeed"+newspeed);

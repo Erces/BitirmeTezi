@@ -47,4 +47,14 @@ public class StickyBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            Debug.Log("TriggerSlow");
+            enemyscript = target.GetComponent<Enemy>();
+            enemyscript.losespeed(slow);
+            Destroy(this.gameObject);
+        }
+    }
 }

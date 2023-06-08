@@ -6,6 +6,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject tip1;
     public GameObject tip2;
+    public GameObject tip3;
 
     public void Play()
     {
@@ -15,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
     {
         tip1.SetActive(!tip1.activeSelf);
         tip2.SetActive(!tip2.activeSelf);
+        tip3.SetActive(!tip3.activeSelf);
     }
     public void Quit()
     {

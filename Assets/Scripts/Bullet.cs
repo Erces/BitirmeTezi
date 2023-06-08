@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     public int damage = 5;
 
-
+    public bool sticky;
     public void Seek(Transform _target)
     {
         target = _target;
@@ -41,8 +41,13 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject == target.gameObject && target != null)
         {
+            Debug.Log("Hit");
             enemyscript = target.GetComponent<Enemy>();
             enemyscript.losehp(damage);
+            if (sticky)
+            {
+                enemyscript.losespeed(1);
+            }
             Destroy(this.gameObject);
         }
     }
