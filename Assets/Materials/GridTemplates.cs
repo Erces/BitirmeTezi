@@ -48,7 +48,7 @@ public class GridTemplates : MonoBehaviour
     {
         if(deathCount >= 3)
         {
-            Time.timeScale = 0f;
+           // Time.timeScale = 0f;
         }
     }
     public void Check3Bases()

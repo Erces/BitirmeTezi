@@ -5,6 +5,7 @@ using DG.Tweening;
 using Cinemachine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public TMP_Text goldText;
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
     public int gold;
     public float counter;
     public float gameTime;
+    public float winTime;
+    public bool gameEnded;
+    public GameObject endPanel;
+    public GameObject winUI;
+    public GameObject loseUI;
     private void Awake()
     {
         i = this;
@@ -29,6 +35,42 @@ public class GameManager : MonoBehaviour
         gameTime = 0;
         gold = 100;
         _transposer = camera.GetCinemachineComponent<CinemachineTransposer>();
+        InvokeRepeating("CheckGameEnd", 10, 1);
+    }
+    public void CheckGameEnd()
+    {
+        if(gameTime > winTime && !gameEnded)
+        {
+            gameEnded = true;
+            Time.timeScale = 0;
+            ToggleWin();
+        }
+        if(GridTemplates.i.deathCount >= 3 && !gameEnded)
+        {
+            gameEnded = true;
+
+            ToggleLose();
+        }
+    }
+    public void ReloadScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+
+    }
+    public void ToggleWin()
+    {
+        endPanel.SetActive(true);
+        winUI.SetActive(true);
+
+    }
+    public void ToggleLose()
+    {
+        endPanel.SetActive(true);
+        loseUI.SetActive(true);
+
+
     }
     private void Update()
     {
