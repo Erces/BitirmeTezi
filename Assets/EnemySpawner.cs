@@ -14,10 +14,11 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> enemies;
 
     public static EnemySpawner i;
+    public float spawnRate;
     void Start()
     {
         i = this; 
-        InvokeRepeating("SpawnEnemies", 5f, 3f);
+        InvokeRepeating("SpawnEnemies", 5f, spawnRate);
     }
 
     // Update is called once per frame

@@ -58,6 +58,7 @@ public class Skills : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i = 0; i < enemies.Length; i++)
         {
+            if(enemies[i] != null)
             enemies[i].GetComponent<Enemy>().SetSpeedNormal();
         }
     }

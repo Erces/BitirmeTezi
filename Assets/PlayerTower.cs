@@ -11,7 +11,6 @@ public class PlayerTower : MonoBehaviour
     public float time;
     void Start()
     {
-        time = 15;
     }
 
     // Update is called once per frame

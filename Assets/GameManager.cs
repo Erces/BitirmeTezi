@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float zoomScale;
     public GameObject normalTurret;
     public GameObject stickyTurret;
+    public GameObject laserTurret;
     public GameObject selectedTurret;
     public int gold;
     public float counter;
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             selectedTurret = stickyTurret;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            selectedTurret = laserTurret;
         }
         counter += Time.deltaTime;
         if(counter >= 1)

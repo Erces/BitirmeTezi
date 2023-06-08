@@ -117,9 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b65f9d6932de9448b2ba1c22850fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseSpeed: 3.5
   maxhp: 10
   newhp: 0
-  maxspeed: 4
+  maxspeed: 3.5
   newspeed: 0
   removeSpeed: 5
   slowed: 0
@@ -128,6 +129,10 @@ MonoBehaviour:
   test: {fileID: 0}
   enemyPower: 5
   healthBar: {fileID: 7681889824438329046}
+  lockedObject: {fileID: 0}
+  lockedObjectTower: {fileID: 0}
+  playerBaseList: []
+  selected: {fileID: 0}
 --- !u!195 &2192469777635659152
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -137,7 +142,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1397278735946161725}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -533,6 +538,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8a6ef6bfd5dba694cbf427afa2cca98a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e6680aafb580a844bb74039afe63df91, type: 2}
     - target: {fileID: 919132149155446097, guid: 8a6ef6bfd5dba694cbf427afa2cca98a,
         type: 3}
       propertyPath: m_Name

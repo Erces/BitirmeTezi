@@ -20,4 +20,13 @@ public class MainMenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void SetNormal()
+    {
+        PlayerPrefs.SetInt("Difficulty", 0);
+    }
+    public void SetHard()
+    {
+        PlayerPrefs.SetInt("Difficulty", 1);
+
+    }
 }

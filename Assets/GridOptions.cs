@@ -6,8 +6,8 @@ public class GridOptions : MonoBehaviour
 {
     // Start is called before the first frame update
     public NavMeshSurface surf;
-    public GameObject tower;
-    public GameObject decorations;
+    public GameObject tower = null;
+    public GameObject decorations = null;
     MeshRenderer renderer;
     void Start()
     {

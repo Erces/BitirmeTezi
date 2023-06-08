@@ -20,13 +20,16 @@ public class Enemy : MonoBehaviour
     public float enemyPower = 5f;
     public HealthBar healthBar;
     public GameObject lockedObject;
+    public GameObject lockedObjectTower;
     public List<GameObject> playerBaseList;
     float minPathCost;
     int minPathNumber;
     int counter = 0;
+    public GameObject selected;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        //agent.SetDestination(transform.position);
         newhp = maxhp;
         newspeed = maxspeed;
         ThinkForDestination();
@@ -47,7 +50,7 @@ public class Enemy : MonoBehaviour
     {
         counter = 0;
         minPathNumber = 0;
-        
+        minPathCost = 999;
         playerBaseList = GridTemplates.i.playerBases;
       
   
@@ -55,21 +58,26 @@ public class Enemy : MonoBehaviour
         {
             PlayerBase playerBase = item.GetComponent<PlayerBase>();
             agent.SetDestination(item.transform.position);
-            float pathLength = agent.remainingDistance;
-            Debug.Log(pathLength);
+            float pathLength = Mathf.Abs(Vector3.Distance(transform.position, item.transform.position));
+            //Debug.Log(pathLength);
             var cost = (playerBase.killedEnemy + playerBase.currentEnemyOnTheWay+1) * pathLength;
-            Debug.Log(cost);
+            Debug.Log("Cost"+counter+ "  :" + cost);
            
             
             if(cost < minPathCost)
             {
                 minPathNumber = counter;
+                minPathCost = cost;
+                
             }
             counter++;
         }
+        Debug.Log("Min: " + minPathNumber);
+        Debug.Log("Min Cost " + minPathCost);
         agent.SetDestination(GridTemplates.i.playerBases[minPathNumber].transform.position);
         GridTemplates.i.playerBases[minPathNumber].GetComponent<PlayerBase>().currentEnemyOnTheWay++;
         lockedObject = GridTemplates.i.playerBases[minPathNumber];
+        lockedObjectTower = GridTemplates.i.playerBases[minPathNumber];
 
     }
     public void losespeed(float slow)
@@ -77,10 +85,10 @@ public class Enemy : MonoBehaviour
         if (slowed == false)
         {
             newspeed = newspeed / slow;
-            agent.speed = newspeed;
+            agent.speed = 1;
             //Debug.Log("losespeed"+newspeed);
             slowed = true;
-            Invoke("removeSlow", removeSpeed); 
+            Invoke("removeSlow", 1); 
         }
         
     }
@@ -101,9 +109,12 @@ public class Enemy : MonoBehaviour
         Debug.Log(newhp);
         if (newhp <= 0)
         {
-            if(lockedObject.GetComponent<PlayerBase>() != null)
+            if(lockedObjectTower.GetComponent<PlayerBase>() != null)
             {
-                lockedObject.GetComponent<PlayerBase>().killedEnemy++;
+                Debug.Log("Die");
+                lockedObjectTower.GetComponent<PlayerBase>().killedEnemy++;
+                if(lockedObjectTower.GetComponent<PlayerBase>().currentEnemyOnTheWay > 0)
+                    lockedObjectTower.GetComponent<PlayerBase>().currentEnemyOnTheWay--;
             }
             EnemySpawner.i.enemies.Remove(this.gameObject);
             Destroy(this.gameObject);
@@ -116,6 +127,9 @@ public class Enemy : MonoBehaviour
         {
             if(hitCollider.tag == "Tower")
             {
+                if (lockedObjectTower.GetComponent<PlayerBase>().currentEnemyOnTheWay > 0)
+                    lockedObjectTower.GetComponent<PlayerBase>().currentEnemyOnTheWay--;
+
                 Debug.Log("Tower Found!");
                 lockedObject = hitCollider.gameObject;
                 agent.SetDestination(lockedObject.transform.position);

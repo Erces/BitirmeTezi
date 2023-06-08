@@ -25,6 +25,15 @@ public class GridTemplates : MonoBehaviour
 
     private void Awake()
     {
+        if(PlayerPrefs.GetInt("Difficulty") == 0)
+        {
+            spawnGridCount = 100;
+        }
+        else
+        {
+            spawnGridCount = 30;
+
+        }
         i = this;
         if(!fixedGridSpawn)
         spawnGridCount = Random.Range(minSpawnGridCount, maxSpawnGridCount);

@@ -320,7 +320,7 @@ MonoBehaviour:
   MaxHP: 55
   healthBar: {fileID: 4160679389910928954}
   price: 120
-  time: 0
+  time: 20
 --- !u!1 &6985727374532000286
 GameObject:
   m_ObjectHideFlags: 0
