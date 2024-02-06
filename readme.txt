@@ -1,1 +1,1 @@
-![TowerDefenseWithRandomTileGeneration - SampleScene - Windows, Mac, Linux - Unity 2021 3 10f1 Personal _DX11_ 2024-02-06 06-26-01 (2)](https://github.com/Erces/TowerDefenseWithRandomTileGeneration/assets/51009171/42dd7a0d-9faa-4674-acb5-ae6b138e3477)
+![TowerDefenseWithRandomTileGeneration - SampleScene - Windows, Mac, Linux - Unity 2021 3 10f1 Personal _DX11_ 2024-02-06 06-58-01](https://github.com/Erces/TowerDefenseWithRandomTileGeneration/assets/51009171/9342735e-68b3-46b6-9bc2-384c6678be95)
