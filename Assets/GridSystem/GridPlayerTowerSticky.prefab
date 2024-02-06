@@ -848,7 +848,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bulletPart
       value: 
-      objectReference: {fileID: 8792666993279916114, guid: cc6a33da8b528f24982cba7dbcf7159a,
+      objectReference: {fileID: 8792666993279916114, guid: 3e8507465ffe6304c989afd8106df481,
         type: 3}
     - target: {fileID: 5233898159668127336, guid: 43d0a8a6441bfcc459f44b5de12e3f5c,
         type: 3}

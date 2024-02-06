@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8792666993279916116}
   - component: {fileID: 8792666993279916119}
   - component: {fileID: 8792666993279916112}
-  - component: {fileID: 1093162840045272652}
+  - component: {fileID: -297170761827687330}
   m_Layer: 0
   m_Name: StickyBullet
   m_TagString: Untagged
@@ -112,11 +112,11 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1093162840045272652
+--- !u!114 &-297170761827687330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,13 +125,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8792666993279916118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99673c9f9c86a3a439073f2da6a33a00, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a5ff3aa33c4a0f419f8bd3158663ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 10
   damage: 15
-  sticky: 1
+  slow: 2
 --- !u!1001 &5148884494913686904
 PrefabInstance:
   m_ObjectHideFlags: 0
